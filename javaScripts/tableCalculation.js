@@ -139,3 +139,19 @@ function clearEmployeeForm() {
         if (el) el.value = "";
     });
 }
+
+
+document.addEventListener("input", function(e) {
+    if (e.target.id === "workingType02") {
+        const val = e.target.value;
+        const options = document.getElementById("type02").options;
+        let salary = "";
+        for (let i = 0; i < options.length; i++) {
+            if (options[i].value === val) {
+                salary = options[i].dataset.salary || "";
+                break;
+            }
+        }
+        document.getElementById("salary").value = salary;
+    }
+});

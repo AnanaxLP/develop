@@ -145,9 +145,15 @@ function createEmployeeCard(m) {
             <div class="inputfield"><label>Gesamtsumme:</label><input type="text" value="${m.gesamtsumme || ''} €" readonly></div>
         `;
     } else {
+        // Stundenlohn abhängig von SHK/WHK
+        let stundensatz = "";
+        if (m.workingType02 === "SHK") stundensatz = "16.99";
+        else if (m.workingType02 === "WHK") stundensatz = "18.27";
+        else stundensatz = m.salary || "";
+
         spezifisch += `
             <div class="inputfield"><label>SHK-Typ:</label><input type="text" value="${m.workingType02 || ''}" readonly></div>
-            <div class="inputfield"><label>Stundenlohn:</label><input type="text" value="${m.salary || ''} €" readonly></div>
+            <div class="inputfield"><label>Stundenlohn:</label><input type="text" value="${stundensatz} €" readonly></div>
             <div class="inputfield"><label>Gesamtkosten:</label><input type="text" value="${m.shkEmployeeSum || ''} €" readonly></div>
         `;
     }

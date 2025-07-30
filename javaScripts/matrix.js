@@ -189,7 +189,7 @@ function searchEntgeld(entgeldtyp){
     }
 
 }
-//searchEntgeld("E1°6");
+
 console.log(matrix.length)
 
 function OutputBrutto(){
